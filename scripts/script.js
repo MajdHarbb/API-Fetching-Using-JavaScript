@@ -20,7 +20,7 @@ fetchDogImage().then((dogs) => {
   document.getElementById("dog-image").src = dogs.message;
   breed = dogs.message.slice(30); 
   breed = breed.substring(0, breed.indexOf('/'));
-  caption.innerText = breed;
+  caption.innerText = breed.charAt(0).toUpperCase()+breed.slice(1);
 });
 
 /* fetch data on button click */
@@ -30,7 +30,7 @@ search.onclick = function () {
   country.innerText = "";
   /* If input field is null --> alert the user*/
   if(input.value == "" ){
-      alert("Please Insert A Name First!");
+      alert("Please enter a name first!");
       
   } else{
     const fetchData = async () => {
