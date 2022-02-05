@@ -13,12 +13,33 @@ body{
     background-color: white;
     
 }
+.dog-div{
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid silver;
+}
 #dog-image{
     max-width: 300px;
     max-width: 200px;
     border-radius: 10px;
-    
     position: relative;
+}
+.search{
+    padding-top: 10px;
+    
+}
+.name-input{
+    width: 40%;
+    height: 30px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.search-btn{
+    width: 40%;
+    height: 45px;
+    padding: 5px;
+    border-radius: 10px;
 }
 .info{
     display: block;
