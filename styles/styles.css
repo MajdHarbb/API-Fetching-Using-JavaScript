@@ -27,7 +27,9 @@ body{
 }
 .search{
     padding-top: 10px;
-    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .name-input{
     width: 40%;
