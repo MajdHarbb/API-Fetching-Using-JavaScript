@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    margin: 5% 30%;
+}
+#dog-image{
+    width: 300px;
+    height: 200px;
+}
