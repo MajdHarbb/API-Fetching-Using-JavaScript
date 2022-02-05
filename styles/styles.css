@@ -1,16 +1,25 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: white;
 }
 .container{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 3px 10px black;
+    flex-direction: column;
     flex-wrap: wrap;
-    border: 2px solid black;
-    margin: 5% 30%;
+    margin: 5% 25%;
+    padding: 40px 40px 40px 40px;
+    background-color: white;
+    
 }
 #dog-image{
-    width: 300px;
-    height: 200px;
+    max-width: 300px;
+    max-width: 200px;
+    border-radius: 10px;
+    
+    position: relative;
+}
+.info{
+    display: block;
 }
