@@ -4,6 +4,7 @@ let name = document.getElementById("name-span");
 let gender = document.getElementById("gender-span");
 let age = document.getElementById("age-span");
 let country = document.getElementById("nationality-span");
+let caption = document.getElementById("caption");
 
 /* fetch random dog image */
 async function fetchDogImage() {
@@ -17,6 +18,9 @@ fetchDogImage().then((dogs) => {
   dogs;
   console.log(dogs);
   document.getElementById("dog-image").src = dogs.message;
+  breed = dogs.message.slice(30); 
+  breed = breed.substring(0, breed.indexOf('/'));
+  caption.innerText = breed;
 });
 
 /* fetch data on button click */
@@ -41,8 +45,8 @@ search.onclick = function () {
           const returned_age = await agify.json();
           const returned_nationality = await nationalize.json();
 
-          name.innerText = input.value;
-          gender.innerText = returned_gender.gender;
+          name.innerText = input.value.charAt(0).toUpperCase() + input.value.slice(1);
+          gender.innerText = returned_gender.gender.charAt(0).toUpperCase() + returned_gender.gender.slice(1);
           age.innerText = returned_age.age;
           console.log(returned_gender.gender);
           console.log(returned_age.age);
@@ -55,6 +59,7 @@ search.onclick = function () {
     
         } catch (err) {
           throw err;
+          alert("sorry name not found");
         }
       };
       fetchData();
