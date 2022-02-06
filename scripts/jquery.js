@@ -25,54 +25,65 @@ $(document).ready(function () {
 
   /* On click get gender, age, and nationality info */
   $("#search-btn").click(function () {
-    
-    //display input name
+
+    /* get input */
     name_input = $("#name-input").val();
-    name_input = name_input.charAt(0).toUpperCase() + name_input.slice(1);
-    $("#name-span").text(`${name_input}`);
 
-    /* Get gender using ajax */
-    $.ajax({
-      url: `https://api.genderize.io/?name=${name_input}`,
-      type: "GET",
-      success: function (result) {
-        console.log(result.gender);
-        gender.text(result.gender.charAt(0).toUpperCase() + result.gender.slice(1));
-      },
-      error: function (error) {
-        console.log(error);
-      },
-    });
+    /* clear country text */
+    country.text("");
 
+    /* Check if input is null */
+    if (!name_input) {
+      alert("empty!");
+    } else {
 
-    /* Get age using ajax */
-    $.ajax({
-      url: ` https://api.agify.io/?name=${name_input}`,
-      type: "GET",
-      success: function (age_result) {
-        console.log(age_result.age);
-        age.text(age_result.age);
-      },
-      error: function (error) {
-        console.log(error);
-      },
-    });
+      //display input name
+      name_input = name_input.charAt(0).toUpperCase() + name_input.slice(1);
+      $("#name-span").text(`${name_input}`);
 
-    /* Get nationality using ajax */
-    $.ajax({
-        url: `https://api.nationalize.io/?name=${name_input}`,
+      /* Get gender using ajax */
+      $.ajax({
+        url: `https://api.genderize.io/?name=${name_input}`,
         type: "GET",
-        success: function (nationality_result) {
-            for(var i=0; i<nationality_result.country.length; i++){
-                console.log(nationality_result.country[i].country_id);
-                country.append(nationality_result.country[i].country_id + " ");
-            }
+        success: function (result) {
+          console.log(result.gender);
+          gender.text(
+            result.gender.charAt(0).toUpperCase() + result.gender.slice(1)
+          );
         },
         error: function (error) {
           console.log(error);
         },
       });
 
-    
+      /* Get age using ajax */
+      $.ajax({
+        url: ` https://api.agify.io/?name=${name_input}`,
+        type: "GET",
+        success: function (age_result) {
+          console.log(age_result.age);
+          age.text(age_result.age);
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+
+      /* Get nationality using ajax */
+      $.ajax({
+        url: `https://api.nationalize.io/?name=${name_input}`,
+        type: "GET",
+        success: function (nationality_result) {
+        /* iterate through country array and get country IDs */
+          for (var i = 0; i < nationality_result.country.length; i++) {
+            console.log(nationality_result.country[i].country_id);
+            country.append(nationality_result.country[i].country_id + " ");
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    }
   });
 });
